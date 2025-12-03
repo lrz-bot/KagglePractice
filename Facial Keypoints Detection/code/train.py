@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import numpy as np
 from torch.utils.data import DataLoader
-from model_face import HourglassSingle
+from model_face_new import HourglassSingle
 from dataset import FaceDataset
 from torch.backends import cudnn
 import torch.optim as optim
@@ -13,7 +13,7 @@ import os
 config=dict()
 config['lr']=0.000001
 config['is_test']=False
-config['file_name']=r"E:\Kaggle\Data\Facial Keypoints Detection\Data\training\training.csv"
+config['file_name']=r"E:\Kaggle\src\Facial Keypoints Detection\Data\training\training.csv"
 config['sigma']=5.
 config['stride']=1     #热力图步长
 config['batch_size']=72

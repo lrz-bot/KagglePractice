@@ -3,13 +3,12 @@ import torch.nn as nn
 
 
 class Hourglass(nn.Module):
-    def __init__(self,n=4,f=256):
+    def __init__(self,f=256):
         """
-        :param n: hourglass模块的层级数目
+        
         :param f: hourglass模块中的特征图数量
         :return:
         """
-        self._n=n
         self._f=f
         super().__init__()
         self.relu=nn.ReLU()
@@ -92,6 +91,9 @@ class HourglassSingle(nn.Module):
         self.transform_to_heatmp=transform_to_heatmap(self.stride)
     def forward(self,x):
         conv=self.hourglass(x)
+        conv=self.hourglass(conv)
+        conv=self.hourglass(conv)
+        conv=self.hourglass(conv)
         res=self.lin(conv)
         res=self.transform_to_heatmp(res)  #转化为热力图大小
         return res
